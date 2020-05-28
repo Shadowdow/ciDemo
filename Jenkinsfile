@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        nodejs "nodejs12"
+        nodejs "nodejs_14.3.0"
     }
     options{
         timeout(time:10, unit: 'MINUTES')
