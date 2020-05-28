@@ -11,7 +11,6 @@ pipeline {
           steps {
             echo '下载依赖...'
             sh """
-              npm install -g @tarojs/cli
               npm i
             """
           }
@@ -20,7 +19,7 @@ pipeline {
          when { branch 'master' }
          steps {
            input "需要部署到QA环境吗?"
-           sh 'npm run build:weapp'
+           sh '.\node_modules\.bin\taro build --type weapp --env development'
          }
        }
        stage('Deploy') {
