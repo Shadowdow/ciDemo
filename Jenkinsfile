@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        nodejs "nodejs_14.3.0"
+        nodejs "nodejs12"
     }
     options{
         timeout(time:10, unit: 'MINUTES')
@@ -16,14 +16,14 @@ pipeline {
             """
           }
        }
-       stage('Build Customer') {
+       stage('Build') {
          when { branch 'master' }
          steps {
            input "需要部署到QA环境吗?"
            sh 'npm run build:weapp'
          }
        }
-       stage('Deploy Customer') {
+       stage('Deploy') {
          when { branch 'master' }
          steps {
            sh 'npm run deploy'
