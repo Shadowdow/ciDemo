@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'node'
-            args '-p 3000:3000'
-        }
-    }
+    agent any
     options{
         timeout(time:10, unit: 'MINUTES')
     }

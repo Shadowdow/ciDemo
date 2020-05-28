@@ -16,7 +16,7 @@ const weixinCli =
   "/Applications/wechatwebdevtools.app/Contents/Resources/app.nw/bin/cli";
 const loginCommand = `${weixinCli} -l`;
 const deployCommand = `${weixinCli} -u ${VERSION}@${projectPath}`;
-const gitCommand = "git log --pretty='%s%b' -n 1";
+const gitCommand = "git log --pretty='%s' -1";
 
 function login(commitMsg) {
   const loginChild = child_process.exec(loginCommand, function(err) {
