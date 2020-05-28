@@ -18,11 +18,13 @@ pipeline {
             """
           }
        }
-       stage('build') {
-          steps {
-            sh "npm run build:weapp"
-          }
-        }
+       stage('Build Customer') {
+         when { branch 'master' }
+         steps {
+           input "需要部署到QA环境吗?"
+           sh 'npm run build:weapp'
+         }
+       }
     }
    post {
        success {
