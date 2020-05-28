@@ -6,7 +6,6 @@ pipeline {
         }
     }
     options{
-        retry(3)
         timeout(time:10, unit: 'MINUTES')
     }
     stages {
@@ -14,14 +13,13 @@ pipeline {
           steps {
             echo '下载依赖...'
             sh """
-              npm install yarn -g
-              yarn
+              npm i
             """
           }
        }
        stage('build') {
           steps {
-            sh "yarn build:weapp"
+            sh "npm run build:weapp"
           }
         }
     }
