@@ -8,7 +8,10 @@ pipeline {
        stage('install') {
           steps {
             echo '下载依赖...'
-            sh 'yarn'
+            sh """
+              npm install yarn -g
+              yarn
+            """
           }
        }
        stage('build') {
