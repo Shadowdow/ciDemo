@@ -5,16 +5,15 @@ pipeline {
         timeout(time:10, unit: 'MINUTES')
     }
     stages {
-       stage('start') {
+       stage('install') {
           steps {
-            echo '构建开始...'
+            echo '下载依赖...'
+            sh 'yarn'
           }
-        }
+       }
        stage('build') {
-          //  在这里也可以设置一些条件，例如分支名称过滤等
           steps {
-            // Windows下使用bat启动脚本，linux或manOS下使用sh启动脚本
-            sh 'powershell ./deploy.ps1'
+            sh "yarn build:weapp"
           }
         }
     }
