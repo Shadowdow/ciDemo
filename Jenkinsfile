@@ -15,19 +15,6 @@ pipeline {
             """
           }
        }
-       stage('Build') {
-         when { branch 'master' }
-         steps {
-           input "需要部署到QA环境吗?"
-           sh '.\node_modules\.bin\taro build --type weapp --env development'
-         }
-       }
-       stage('Deploy') {
-         when { branch 'master' }
-         steps {
-           sh 'npm run deploy'
-         }
-       }
     }
    post {
        success {
