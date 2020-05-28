@@ -13,7 +13,7 @@ const projectPath = path.resolve(path.dirname(""), "dist");
 
 const weixinCli =
   process.env.WEIXIN_CLI ||
-  "/Applications/wechatwebdevtools.app/Contents/Resources/app.nw/bin/cli";
+  "/Applications/wechatwebdevtools.app/Contents/MacOS/cli";
 const loginCommand = `${weixinCli} -l`;
 const deployCommand = `${weixinCli} -u ${VERSION}@${projectPath}`;
 const gitCommand = "git log --pretty='%s' -1";
