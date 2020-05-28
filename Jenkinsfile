@@ -14,7 +14,7 @@ pipeline {
           //  在这里也可以设置一些条件，例如分支名称过滤等
           steps {
             // Windows下使用bat启动脚本，linux或manOS下使用sh启动脚本
-            bat 'powershell ./deploy.ps1'
+            sh 'powershell ./deploy.ps1'
           }
         }
     }
