@@ -13,6 +13,7 @@ pipeline {
           steps {
             echo '下载依赖...'
             sh """
+              npm install -g @tarojs/cli
               npm i
             """
           }
