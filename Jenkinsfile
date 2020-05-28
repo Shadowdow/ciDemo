@@ -25,6 +25,12 @@ pipeline {
            sh 'npm run build:weapp'
          }
        }
+       stage('Deploy Customer') {
+         when { branch 'master' }
+         steps {
+           sh 'npm run deploy'
+         }
+       }
     }
    post {
        success {

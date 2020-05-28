@@ -1,16 +1,15 @@
 #!/usr/bin/env node
 
 const child_process = require("child_process");
-const fs = require("fs");
+// const fs = require("fs");
 const path = require("path");
 
 const package = require("../package.json");
 
 const NEED_LOGIN_IN_ERROR_CODE = "40000";
-const PROJECT = process.env.PROJECT;
-const ENV = process.env.ENV;
+// const ENV = process.env.ENV;
 const VERSION = package.version;
-const projectPath = path.resolve(path.dirname(""), "dist", PROJECT);
+const projectPath = path.resolve(path.dirname(""), "dist");
 
 const weixinCli =
   process.env.WEIXIN_CLI ||
@@ -25,8 +24,9 @@ function login(commitMsg) {
       console.error(`login failed\n${err}`);
       return;
     }
-    const message = `${ENV? `ENV: ${ENV}` : ''} ${commitMsg}`
-    deploy(message);
+    // const message = `${ENV? `ENV: ${ENV}` : ''} ${commitMsg}`
+    // deploy(message);
+    console.log(commitMsg)
   });
 
   loginChild.stdout.on("data", function(data) {
@@ -68,5 +68,5 @@ function deploy(commitMsg) {
 }
 
 getLatestCommitMsg(function(commitMsg) {
-  deploy(commitMsg);
+  login(commitMsg);
 });

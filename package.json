@@ -10,7 +10,8 @@
   },
   "scripts": {
     "build:weapp": "taro build --type weapp",
-    "dev:weapp": "npm run build:weapp -- --watch"
+    "dev:weapp": "npm run build:weapp -- --watch",
+    "deploy": "node ./scripts/deploy.js"
   },
   "author": "",
   "license": "MIT",
