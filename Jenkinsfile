@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        nodejs "nodejs12"
+    }
     options{
         timeout(time:10, unit: 'MINUTES')
     }
