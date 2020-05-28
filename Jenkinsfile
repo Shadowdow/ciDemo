@@ -10,6 +10,8 @@ pipeline {
        stage('install') {
           steps {
             echo '下载依赖...'
+            echo 'node -v'
+            echo 'npm -v'
             sh """
               npm i
             """
