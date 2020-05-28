@@ -18,19 +18,19 @@ pipeline {
             """
           }
        }
-    }
-    stage('Build') {
-         when { branch 'master' }
-         steps {
-           input "需要部署到QA环境吗?"
-           sh 'npm run build:weapp'
-         }
+       stage('Build') {
+            when { branch 'master' }
+            steps {
+              input "需要部署到QA环境吗?"
+              sh 'npm run build:weapp'
+            }
        }
        stage('Deploy') {
-         when { branch 'master' }
-         steps {
-           sh 'npm run deploy'
-         }
+            when { branch 'master' }
+            steps {
+              sh 'npm run deploy'
+            }
+       }
     }
     post {
        success {
