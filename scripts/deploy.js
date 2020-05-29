@@ -15,7 +15,7 @@ const weixinCli =
   process.env.WEIXIN_CLI ||
   '/Applications/wechatwebdevtools.app/Contents/MacOS/cli';
 const loginCommand = `miniprogram-ci upload --pp ${projectPath} --pkp ./private.key --appid wx3104fa42162177c0 --uv 1.0.0 -r 1 --enable-es6 true`;
-const deployCommand = `miniprogram-ci upload --pp ${projectPath} --pkp ./private.key --appid wx3104fa42162177c0 --uv 1.0.0 -r 1 --enable-es6 true`;
+const deployCommand = `miniprogram-ci upload --pp ${projectPath} --pkp ${path.resolve(path.dirname(''), 'scripts/private.key')} --appid wx3104fa42162177c0 --uv 1.0.0 -r 1 --enable-es6 true`;
 const gitCommand = 'git log --pretty=\'%s\' -1';
 
 function login(commitMsg) {
