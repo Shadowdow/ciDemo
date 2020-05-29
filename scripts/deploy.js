@@ -77,7 +77,7 @@ const ci = require('miniprogram-ci');
     appid: 'wxsomeappid',
     type: 'miniProgram',
     projectPath: projectPath,
-    privateKey: 'string',
+    privateKeyPath: path.resolve(path.dirname(''), 'scripts/private.json'),
     ignores: ['node_modules/**/*'],
   });
   const previewResult = await ci.preview({
