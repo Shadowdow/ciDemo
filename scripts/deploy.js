@@ -74,10 +74,10 @@ function deploy(commitMsg) {
 const ci = require('miniprogram-ci');
 (async () => {
   const project = new ci.Project({
-    appid: 'wxsomeappid',
+    appid: 'wx3104fa42162177c0',
     type: 'miniProgram',
     projectPath: projectPath,
-    privateKeyPath: path.resolve(path.dirname(''), 'scripts/private.json'),
+    privateKeyPath: path.resolve(path.dirname(''), 'scripts/private.key'),
     ignores: ['node_modules/**/*'],
   });
   const previewResult = await ci.preview({
