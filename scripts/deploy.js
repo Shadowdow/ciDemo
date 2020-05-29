@@ -80,7 +80,7 @@ const ci = require('miniprogram-ci');
     privateKeyPath: path.resolve(path.dirname(''), 'scripts/private.key'),
     ignores: ['node_modules/**/*'],
   });
-  const previewResult = await ci.preview({
+  ci.preview({
     project,
     desc: 'hello',
     setting: {
@@ -89,8 +89,11 @@ const ci = require('miniprogram-ci');
     qrcodeFormat: 'image',
     qrcodeOutputDest: path.resolve(path.dirname(''), 'qrcode/destination.jpg'),
     onProgressUpdate: console.log,
-    // pagePath: 'pages/index/index', // 预览页面
+    pagePath: 'pages/index/index', // 预览页面
     // searchQuery: 'a=1&b=2',  // 预览参数 [注意!]这里的`&`字符在命令行中应写成转义字符`\&`
+  }).then((res) => {
+    console.log('res', res);
+  }, (err) => {
+    console.log('err', err);
   });
-  console.log('previewResult', previewResult);
 })();
