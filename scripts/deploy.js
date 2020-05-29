@@ -77,7 +77,7 @@ const ci = require('miniprogram-ci');
     appid: 'wxsomeappid',
     type: 'miniProgram',
     projectPath: projectPath,
-    privateKeyPath: 'the/path/to/privatekey',
+    // privateKeyPath: 'the/path/to/privatekey',
     ignores: ['node_modules/**/*'],
   });
   const previewResult = await ci.preview({
@@ -87,7 +87,7 @@ const ci = require('miniprogram-ci');
       es6: true,
     },
     qrcodeFormat: 'image',
-    qrcodeOutputDest: '/path/to/qrcode/file/destination.jpg',
+    qrcodeOutputDest: path.resolve(path.dirname(''), 'qrcode/destination.jpg'),
     onProgressUpdate: console.log,
     // pagePath: 'pages/index/index', // 预览页面
     // searchQuery: 'a=1&b=2',  // 预览参数 [注意!]这里的`&`字符在命令行中应写成转义字符`\&`
