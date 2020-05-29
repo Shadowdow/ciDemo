@@ -15,7 +15,7 @@ const weixinCli =
   process.env.WEIXIN_CLI ||
   '/Applications/wechatwebdevtools.app/Contents/MacOS/cli';
 const loginCommand = `miniprogram-ci upload --pp ${projectPath} --pkp ./private.key --appid wx3104fa42162177c0 --uv 1.0.0 -r 1 --enable-es6 true`;
-const deployCommand = `${weixinCli} -u ${VERSION}@${projectPath}`;
+const deployCommand = `miniprogram-ci upload --pp ${projectPath} --pkp ./private.key --appid wx3104fa42162177c0 --uv 1.0.0 -r 1 --enable-es6 true`;
 const gitCommand = 'git log --pretty=\'%s\' -1';
 
 function login(commitMsg) {
@@ -48,8 +48,7 @@ function getLatestCommitMsg(cb) {
 }
 
 function deploy(commitMsg) {
-  const deployChild = child_process.exec(
-    `${deployCommand} --upload-desc '${commitMsg}'`,
+  const deployChild = child_process.exec(deployCommand,
     function (err) {
       if (err && err.message.includes(NEED_LOGIN_IN_ERROR_CODE)) {
         console.warn(`need login in: ${err.message}`);
@@ -62,13 +61,15 @@ function deploy(commitMsg) {
     }
   );
 
+  console.log('commitMsg', commitMsg);
+
   deployChild.stdout.on('data', function (data) {
     console.log(data);
   });
 }
 
 getLatestCommitMsg(function (commitMsg) {
-  login(commitMsg);
+  deploy(commitMsg);
 });
 
 // const ci = require('miniprogram-ci');
