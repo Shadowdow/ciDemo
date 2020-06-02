@@ -68,6 +68,7 @@ function deploy(commitMsg) {
     console.log(data);
   });
 }
+
 //
 // getLatestCommitMsg(function (commitMsg) {
 //   deploy(commitMsg);
@@ -101,17 +102,10 @@ function deploy(commitMsg) {
 // })();
 
 const ci = require('miniprogram-ci');
-const yargs = require('yargs');
-const argv = yargs.argv
 // 开发版: npm run deploy -- --type=develop --v=1.1.1 --robot=1 --desc=我是描述
 // 体验版: npm run deploy -- --type=trial --v=1.1.1 --robot=1 --desc=我是描述;
 (
   async () => {
-    const { type = 'develop', v: version, robot = 2, desc } = argv;
-    console.log(`type: ${type}`);
-    console.log(`version: ${version}`);
-    console.log(`desc: ${desc}`);
-    console.log(`robot: ${robot}`);
     const project = new ci.Project({
       appid: 'wx3104fa42162177c0',
       type: 'miniProgram',
@@ -121,10 +115,10 @@ const argv = yargs.argv
     });
     const defaults = {
       project,
-      desc,
+      desc: 'test',
       setting: { es6: false, urlCheck: true, postcss: false, minified: false },
       onProgressUpdate: console.log,
     };
-    const uploadConfig = Object.assign({}, defaults, { version, robot: 1, });
+    const uploadConfig = Object.assign({}, defaults, { version: VERSION, robot: 1, });
     await ci.upload(uploadConfig);
   })();
