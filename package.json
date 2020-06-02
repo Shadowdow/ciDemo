@@ -52,7 +52,6 @@
     "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-react-hooks": "^1.6.1",
     "eslint-plugin-taro": "2.0.0-beta.13",
-    "miniprogram-ci": "1.0.30",
     "stylelint": "9.3.0",
     "stylelint-config-taro-rn": "2.0.0-beta.13",
     "stylelint-taro-rn": "2.0.0-beta.13",

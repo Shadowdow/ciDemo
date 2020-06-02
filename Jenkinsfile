@@ -14,6 +14,7 @@ pipeline {
             sh 'npm -v'
             sh """
               npm install -g @tarojs/cli
+              npm install -g miniprogram-ci
               npm i
             """
           }
