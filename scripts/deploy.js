@@ -70,9 +70,9 @@ function deploy(commitMsg) {
 }
 
 
-getLatestCommitMsg(function (commitMsg) {
-  deploy(commitMsg);
-});
+// getLatestCommitMsg(function (commitMsg) {
+//   deploy(commitMsg);
+// });
 
 // const ci = require('miniprogram-ci');
 // (async () => {
@@ -101,24 +101,24 @@ getLatestCommitMsg(function (commitMsg) {
 //   });
 // })();
 
-// const ci = require('miniprogram-ci');
+const ci = require('miniprogram-ci');
 // 开发版: npm run deploy -- --type=develop --v=1.1.1 --robot=1 --desc=我是描述
 // 体验版: npm run deploy -- --type=trial --v=1.1.1 --robot=1 --desc=我是描述;
-// (
-//   async () => {
-//     const project = new ci.Project({
-//       appid: 'wx3104fa42162177c0',
-//       type: 'miniProgram',
-//       projectPath: projectPath,
-//       privateKeyPath: privateKeyPath,
-//       ignores: ['node_modules/**/*'],
-//     });
-//     const defaults = {
-//       project,
-//       desc: 'test',
-//       setting: { es6: false, urlCheck: true, postcss: false, minified: false },
-//       onProgressUpdate: console.log,
-//     };
-//     const uploadConfig = Object.assign({}, defaults, { version: VERSION, robot: 1, });
-//     await ci.upload(uploadConfig);
-//   })();
+(
+  async () => {
+    const project = new ci.Project({
+      appid: 'wx3104fa42162177c0',
+      type: 'miniProgram',
+      projectPath: projectPath,
+      privateKeyPath: privateKeyPath,
+      ignores: ['node_modules/**/*'],
+    });
+    const defaults = {
+      project,
+      desc: 'test',
+      setting: { es6: false, urlCheck: true, postcss: false, minified: false },
+      onProgressUpdate: console.log,
+    };
+    const uploadConfig = Object.assign({}, defaults, { version: VERSION, robot: 1, });
+    await ci.upload(uploadConfig);
+  })();
