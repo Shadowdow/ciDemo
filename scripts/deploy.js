@@ -14,7 +14,7 @@ const projectPath = path.resolve(path.dirname(''), 'dist');
 const weixinCli =
   process.env.WEIXIN_CLI ||
   '/Applications/wechatwebdevtools.app/Contents/MacOS/cli';
-const loginCommand = `miniprogram-ci upload --pp ${projectPath} --pkp ./private.key --appid wx3104fa42162177c0 --uv 1.0.0 -r 1 --enable-es6 true`;
+const loginCommand = `miniprogram-ci preview --pp ./dist/ --pkp ./scripts/private.key --appid wx3104fa42162177c0 --uv 1.0.1 -r 1 --enable-es6 true --qrcode-format image --qrcode-output-dest './qrcode/destination1.jpg'`;
 const deployCommand = `miniprogram-ci upload --pp ${projectPath} --pkp ${path.resolve(path.dirname(''), 'scripts/private.key')} --appid wx3104fa42162177c0 --uv 1.0.0 -r 1 --enable-es6 true`;
 const gitCommand = 'git log --pretty=\'%s\' -1';
 
@@ -98,3 +98,4 @@ getLatestCommitMsg(function (commitMsg) {
 //     console.log('err', err);
 //   });
 // })();
+
