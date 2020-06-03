@@ -32,13 +32,14 @@ getLatestCommitMsg(function (commitMsg) {
         privateKeyPath: privateKeyPath,
         ignores: ['node_modules/**/*'],
       });
-      const defaults = {
+      await ci.upload({
         project,
+        version: VERSION,
         desc: commitMsg,
-        setting: { es6: false, urlCheck: true, postcss: false, minified: false },
+        setting: {
+          es6: true,
+        },
         onProgressUpdate: console.log,
-      };
-      const uploadConfig = Object.assign({}, defaults, { version: VERSION, robot: 1, });
-      await ci.upload(uploadConfig);
+      });
     })();
 });

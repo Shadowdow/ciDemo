@@ -67,6 +67,7 @@ class Index extends Component {
     return (
       <View className='index'>
         <View>切换另一个开发版为体验版</View>
+        <View>新添加了一个开发人员哦</View>
         <Button onClick={this.increment}>+</Button>
         <Button onClick={this.decrement}>-</Button>
         <Button onClick={this.incrementAsync}>Add Async</Button>
