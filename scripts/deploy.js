@@ -6,8 +6,6 @@ const package = require('../package.json');
 const VERSION = package.version;
 const projectPath = path.resolve(path.dirname(''), 'dist');
 const privateKeyPath = path.resolve(path.dirname(''), 'scripts/private.key');
-
-// const deployCommand = `miniprogram-ci upload --pp ${projectPath} --pkp ${path.resolve(path.dirname(''), 'scripts/private.key')} --appid wx3104fa42162177c0 --uv 1.0.1 -r 1 --enable-es6 true`;
 const gitCommand = 'git log --pretty=\'%s\' -1';
 
 function getLatestCommitMsg(cb) {
@@ -23,77 +21,24 @@ function getLatestCommitMsg(cb) {
   });
 }
 
-function deploy(commitMsg) {
-  const deployChild = child_process.exec(deployCommand,
-    function (err) {
-      if (err && err.message.includes(NEED_LOGIN_IN_ERROR_CODE)) {
-        console.warn(`need login in: ${err.message}`);
-        login(commitMsg);
-        return;
-      }
-      if (err) {
-        console.error(`deploy failed\n${err}`);
-      }
-    }
-  );
-
-  console.log('commitMsg', commitMsg);
-
-  deployChild.stdout.on('data', function (data) {
-    console.log(data);
-  });
-}
-
-
 getLatestCommitMsg(function (commitMsg) {
-  deploy(commitMsg);
+  const ci = require('miniprogram-ci');
+  (
+    async () => {
+      const project = new ci.Project({
+        appid: 'wx3104fa42162177c0',
+        type: 'miniProgram',
+        projectPath: projectPath,
+        privateKeyPath: privateKeyPath,
+        ignores: ['node_modules/**/*'],
+      });
+      const defaults = {
+        project,
+        desc: commitMsg,
+        setting: { es6: false, urlCheck: true, postcss: false, minified: false },
+        onProgressUpdate: console.log,
+      };
+      const uploadConfig = Object.assign({}, defaults, { version: VERSION, robot: 1, });
+      await ci.upload(uploadConfig);
+    })();
 });
-
-// const ci = require('miniprogram-ci');
-// (async () => {
-//   const project = new ci.Project({
-//     appid: 'wx3104fa42162177c0',
-//     type: 'miniProgram',
-//     projectPath: projectPath,
-//     privateKeyPath: path.resolve(path.dirname(''), 'scripts/private.key'),
-//     ignores: ['node_modules/**/*'],
-//   });
-//   ci.preview({
-//     project,
-//     desc: 'hello',
-//     setting: {
-//       es6: true,
-//     },
-//     qrcodeFormat: 'image',
-//     qrcodeOutputDest: path.resolve(path.dirname(''), 'qrcode/destination.jpg'),
-//     onProgressUpdate: console.log,
-//     pagePath: 'pages/index/index', // 预览页面
-//     // searchQuery: 'a=1&b=2',  // 预览参数 [注意!]这里的`&`字符在命令行中应写成转义字符`\&`
-//   }).then((res) => {
-//     console.log('res', res);
-//   }, (err) => {
-//     console.log('err', err);
-//   });
-// })();
-
-const ci = require('miniprogram-ci');
-// 开发版: npm run deploy -- --type=develop --v=1.1.1 --robot=1 --desc=我是描述
-// 体验版: npm run deploy -- --type=trial --v=1.1.1 --robot=1 --desc=我是描述;
-(
-  async () => {
-    const project = new ci.Project({
-      appid: 'wx3104fa42162177c0',
-      type: 'miniProgram',
-      projectPath: projectPath,
-      privateKeyPath: privateKeyPath,
-      ignores: ['node_modules/**/*'],
-    });
-    const defaults = {
-      project,
-      desc: 'test',
-      setting: { es6: false, urlCheck: true, postcss: false, minified: false },
-      onProgressUpdate: console.log,
-    };
-    const uploadConfig = Object.assign({}, defaults, { version: VERSION, robot: 1, });
-    await ci.upload(uploadConfig);
-  })();
