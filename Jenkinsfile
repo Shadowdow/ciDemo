@@ -21,7 +21,8 @@ pipeline {
        stage('Build') {
             when { branch 'master' }
             steps {
-              sh 'npm run build:weapp'
+              input "需要部署到QA环境吗?"
+              sh 'NODE_ENV=qa npm run build:weapp'
             }
        }
        stage('Deploy') {

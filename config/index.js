@@ -22,8 +22,7 @@ const config = {
       'transform-object-rest-spread'
     ]
   },
-  defineConstants: {
-  },
+  defineConstants: {},
   mini: {
     postcss: {
       autoprefixer: {
@@ -38,9 +37,7 @@ const config = {
       },
       pxtransform: {
         enable: true,
-        config: {
-
-        }
+        config: {}
       },
       url: {
         enable: true,
@@ -83,8 +80,9 @@ const config = {
 }
 
 module.exports = function (merge) {
+  console.log('NODE_ENV', process.env.NODE_ENV);
   if (process.env.NODE_ENV === 'development') {
-    return merge({}, config, require('./dev'))
+    return merge({}, config, require('./dev'));
   }
-  return merge({}, config, require('./prod'))
-}
+  return merge({}, config, require('./prod'));
+};
