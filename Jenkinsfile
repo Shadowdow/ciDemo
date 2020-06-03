@@ -14,6 +14,7 @@ pipeline {
             sh 'npm -v'
             sh """
               npm i
+              npm rebuild node-sass
             """
           }
        }
