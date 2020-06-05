@@ -53,6 +53,7 @@
     "eslint-plugin-react-hooks": "^1.6.1",
     "eslint-plugin-taro": "2.0.0-beta.13",
     "miniprogram-ci": "1.0.30",
+    "@tarojs/cli": "2.2.7",
     "stylelint": "9.3.0",
     "stylelint-config-taro-rn": "2.0.0-beta.13",
     "stylelint-taro-rn": "2.0.0-beta.13",

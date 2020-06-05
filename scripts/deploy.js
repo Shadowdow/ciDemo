@@ -45,7 +45,7 @@ getLatestCommitMsg(function (commitMsg) {
 
       const previewResult = await ci.preview({
         project,
-        desc: 'commitMsg',
+        desc: commitMsg,
         setting: {
           es6: true,
         },
