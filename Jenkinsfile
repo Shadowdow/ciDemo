@@ -13,8 +13,7 @@ pipeline {
             sh 'node -v'
             sh 'npm -v'
             sh """
-              npm i
-              npm rebuild node-sass
+              npm i --registry=http://registry.npm.taobao.org
             """
           }
        }

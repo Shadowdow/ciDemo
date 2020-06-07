@@ -6,7 +6,6 @@ const package = require('../package.json');
 const VERSION = package.version;
 const projectPath = path.resolve(path.dirname(''), 'dist');
 const privateKeyPath = path.resolve(path.dirname(''), 'scripts/private.key');
-const previewQrcode = path.resolve(path.dirname(''), 'qrcode/destination.jpg');
 const gitCommand = 'git log --pretty=\'%s\' -1';
 
 function getLatestCommitMsg(cb) {
@@ -33,26 +32,14 @@ getLatestCommitMsg(function (commitMsg) {
         privateKeyPath: privateKeyPath,
         ignores: ['node_modules/**/*'],
       });
-      // await ci.upload({
-      //   project,
-      //   version: VERSION,
-      //   desc: commitMsg,
-      //   setting: {
-      //     es6: true,
-      //   },
-      //   onProgressUpdate: console.log,
-      // });
-
-      const previewResult = await ci.preview({
+      await ci.upload({
         project,
+        version: VERSION,
         desc: commitMsg,
         setting: {
           es6: true,
         },
-        qrcodeFormat: 'image',
-        qrcodeOutputDest: previewQrcode,
-        onProgressUpdate: console.log
-      })
-      console.log(previewResult)
+        onProgressUpdate: console.log,
+      });
     })();
 });
