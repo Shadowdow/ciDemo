@@ -32,7 +32,7 @@ getLatestCommitMsg(function (commitMsg) {
         privateKeyPath: privateKeyPath,
         ignores: ['node_modules/**/*'],
       });
-      const uploadResult = await ci.upload({
+      await ci.upload({
         project,
         version: VERSION,
         desc: commitMsg,
@@ -41,6 +41,5 @@ getLatestCommitMsg(function (commitMsg) {
         },
         onProgressUpdate: console.log,
       });
-      console.log('uploadResult', uploadResult);
     })();
 });

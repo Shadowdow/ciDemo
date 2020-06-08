@@ -72,6 +72,7 @@ class Index extends Component {
         <View>for preview oneMore</View>
         <View>add an apple</View>
         <View>some change</View>
+        <View>for program-ci</View>
         <Button onClick={this.increment}>+</Button>
         <Button onClick={this.decrement}>-</Button>
         <Button onClick={this.incrementAsync}>Add Async</Button>
