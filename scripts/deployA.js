@@ -10,7 +10,7 @@ const projectPath = path.resolve(path.dirname(''), 'dist');
 
 const weixinCli = '/Applications/wechatwebdevtools.app/Contents/Resources/app.nw/bin/cli';
 const loginCommand = `${weixinCli} -l`;
-const deployCommand = `${weixinCli} -u ${VERSION}@${projectPath} --upload-desc`;
+const deployCommand = `${weixinCli} -u ${VERSION}@${projectPath}`;
 const gitCommand = 'git log --pretty=\'%s\' -1';
 
 function login(commitMsg) {
@@ -42,9 +42,8 @@ function getLatestCommitMsg(cb) {
 }
 
 function deploy(commitMsg) {
-  console.log('deploy-commitMsg', commitMsg);
   const deployChild = child_process.exec(
-    `${deployCommand} '${commitMsg}'`,
+    `${deployCommand} --upload-desc '${commitMsg}'`,
     function (err) {
       if (err && err.message.includes(NEED_LOGIN_IN_ERROR_CODE)) {
         console.warn(`need login in: ${err.message}`);
