@@ -42,6 +42,7 @@ function getLatestCommitMsg(cb) {
 }
 
 function deploy(commitMsg) {
+  console.log('deploy-commitMsg', commitMsg);
   const deployChild = child_process.exec(
     `${deployCommand} '${commitMsg}'`,
     function (err) {
