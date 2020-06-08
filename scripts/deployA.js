@@ -4,7 +4,6 @@ const child_process = require('child_process');
 const path = require('path');
 const package = require('../package.json');
 const NEED_LOGIN_IN_ERROR_CODE = '40000';
-const ENV = process.env.ENV;
 const VERSION = package.version;
 const projectPath = path.resolve(path.dirname(''), 'dist');
 
@@ -19,8 +18,7 @@ function login(commitMsg) {
       console.error(`login failed\n${err}`);
       return;
     }
-    const message = `${ENV ? `ENV: ${ENV}` : ''} ${commitMsg}`;
-    deploy(message);
+    deploy(commitMsg);
   });
 
   loginChild.stdout.on('data', function (data) {
