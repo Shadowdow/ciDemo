@@ -11,7 +11,8 @@
   "scripts": {
     "build:weapp": "taro build --type weapp",
     "dev:weapp": "npm run build:weapp -- --watch",
-    "deploy": "node ./scripts/deploy.js"
+    "deployA": "node ./scripts/deployA.js",
+    "deployB": "node ./scripts/deployB.js"
   },
   "author": "",
   "license": "MIT",
