@@ -39,7 +39,7 @@ getLatestCommitMsg(function (commitMsg) {
         setting: {
           es6: true,
         },
-        robot: '2',
+        // robot: '2',
         onProgressUpdate: console.log,
       });
     })();
