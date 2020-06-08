@@ -27,7 +27,7 @@ pipeline {
        stage('Deploy') {
             when { branch 'master' }
             steps {
-              sh 'npm run deployA'
+              sh 'npm run deployB'
             }
        }
     }
