@@ -1,0 +1,22 @@
+.input {
+  border: 1px solid #ccc;
+  height: 24px;
+  padding: 0 8px;
+  font-size: 16px;
+  display: inline-block;
+}
+
+.input-view {
+  padding: 0 8px;
+  height: 24px;
+  line-height: 24px;
+  border: 1px solid #ccc;
+  text-overflow: clip;
+  overflow: hidden;
+  font-size: 16px;
+  display: inline-block;
+
+  &.placeholder {
+    color: grey;
+  }
+}

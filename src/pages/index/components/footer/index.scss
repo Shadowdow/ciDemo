@@ -1,0 +1,27 @@
+.placeholder {
+  height: 86px;
+}
+
+.footer {
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: darkslategray;
+  color: #FFF;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .btn {
+    height: 70px;
+    line-height: 70px;
+    flex-grow: 1;
+    text-align: center;
+
+    &:first-child {
+      background-color: chocolate;
+    }
+  }
+}

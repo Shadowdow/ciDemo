@@ -1,8 +1,9 @@
 const config = {
   projectName: 'myApp',
   date: '2020-6-2',
-  designWidth: 750,
+  designWidth: 375,
   deviceRatio: {
+    '375': 1 / 2,
     '640': 2.34 / 2,
     '750': 1,
     '828': 1.81 / 2
@@ -22,7 +23,8 @@ const config = {
       'transform-object-rest-spread'
     ]
   },
-  defineConstants: {},
+  defineConstants: {
+  },
   mini: {
     postcss: {
       autoprefixer: {
@@ -37,7 +39,9 @@ const config = {
       },
       pxtransform: {
         enable: true,
-        config: {}
+        config: {
+
+        }
       },
       url: {
         enable: true,
@@ -80,9 +84,8 @@ const config = {
 }
 
 module.exports = function (merge) {
-  console.log('NODE_ENV', process.env.NODE_ENV);
   if (process.env.NODE_ENV === 'development') {
-    return merge({}, config, require('./dev'));
+    return merge({}, config, require('./dev'))
   }
-  return merge({}, config, require('./prod'));
-};
+  return merge({}, config, require('./prod'))
+}

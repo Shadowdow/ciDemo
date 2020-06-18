@@ -1,0 +1,82 @@
+.scroll-view {
+  background-color: aquamarine;
+  width: 100%;
+  height: 80px;
+  white-space: nowrap;
+
+  .scroll-view-item {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    border: 1px solid #fff;
+    margin-right: 100px;
+    display: inline-block;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.index {
+}
+
+.content {
+  //background-color: #cccccc;
+  //height: 100vh;
+
+  .text {
+    text-align: center;
+    padding: 8px;
+    margin-bottom: 80vh;
+  }
+
+  .input {
+    border: 1px solid #cccccc;
+    border-radius: 2px;
+    padding: 8px 16px;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 100vh;
+    margin-bottom: 20vh;
+  }
+}
+
+.footer {
+  height: 140px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: darkslategray;
+  color: #FFF;
+  z-index: 10;
+
+  .btn {
+    width: 50%;
+    height: 140px;
+    line-height: 140px;
+    text-align: center;
+    display: inline-block;
+
+    &:first-child {
+      background-color: chocolate;
+    }
+  }
+
+}
+
+.user-info-btn {
+  color: #FFF;
+  padding: 0;
+  flex-grow: 1;
+
+  &::after {
+    border: none;
+  }
+}
+
+.field{
+  display: flex;
+}
